@@ -1,0 +1,87 @@
+
+{% extends 'main.html' %}
+
+{% block title %} shopcart {% endblock title %}
+
+{% block body_content %}
+{% load static %}
+
+
+
+<section class="shopping-cart spad">
+<div class="container">
+<div class="row">
+<div class="col-lg-8">
+<div class="shopping__cart__table">
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+            {% for item in products %}
+            <tr>
+                <td class="product__cart__item">
+                    <div class="product__cart__item__pic">
+                    {% if item.product.product_image %}
+                    <img src="{{item.product.product_image.url}}" class="card-img img-fluid" alt="" id="product-detail" style="width: 150px; height: 170px;">
+                    {% else %}
+                    <i class="fas fa-user fa-lg fa-fw text-dark me-2"></i>
+                    {% endif %}
+                    </div>
+                    <div class="product__cart__item__text">
+                        <h6>{{item.product.product_name}}</h6>
+                        <h5>{{item.product.price}}</h5>
+                    </div>
+                </td>
+                <td class="quantity__item">
+                    {{item.quantity}}
+                </td>
+                <td class="cart__price">$ {{item.price_item}}</td>
+                <td class="cart__close"><a href="{% url 'delete_Order' item.product_id %}"><i class="fa fa-close"></i></a></i></td>
+
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+<!--  -->
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="continue__btn">
+            <a href="{% url 'dashboard' %}">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+</div>
+<!--  -->
+<div class="col-lg-4">
+<div class="cart__discount">
+    <h6>Discount codes</h6>
+    <form action="#">
+        <input type="text" placeholder="Coupon code">
+        <button type="submit">Apply</button>
+    </form>
+</div>
+<div class="cart__total">
+    <h6>Cart total</h6>
+    {% if com %}
+    <ul>
+        <li>Total <span>$ {{com}}</span></li>
+    </ul>
+    {% endif %}
+    <a href="#" class="primary-btn">Proceed to checkout</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock body_content %}

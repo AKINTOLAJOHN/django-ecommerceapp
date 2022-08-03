@@ -1,0 +1,92 @@
+{% extends 'main.html' %}
+{% block title %} Manage_staff {% endblock title %}
+
+{% block body_content %}
+{% load static %}
+<div id="dash"> 
+
+<section class="is-title-bar">
+<div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+<ul>
+<li>Manage Staff Profile</li>
+</ul>
+</div>
+</section>
+
+<section class="section main-section">
+<div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
+        
+        <table class="table table-dark table-striped table-hover">
+            <tr>
+                <th>STAFF_ID</th> 
+                <th>PICTURE</th>
+                <th>USERNAME</th>
+                <th>FIRST_NAME</th>
+                <th>LASTNAME</th>
+                <th>POSITION</th>
+                <th>STATUS</th>
+                <th>PROFILE</th>
+            </tr>
+            {% if staff %}
+
+            {% for staff in staff %}
+            
+            <tr>
+                <td>
+                    <span style="color: #969cad;" class="font-weight-bold">
+                        {{staff.id}}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white" class="font-weight-bold">
+                    {% if staff.profile_passport %}
+                        <img src="{{staff.profile_passport.url}}" alt="img" width="80px" height="100px" />
+                    {% else %}
+                    <i class="fas fa-user fa-lag fa-fw text-dark me-2"></i>
+                    {% endif %}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white;" class="font-weight-bold">
+                        {{staff.user.username}}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white;" class="font-weight-bold">
+                        {{staff.user.first_name}}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white;" class="font-weight-bold">
+                        {{staff.user.last_name}}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white;" class="font-weight-bold">
+                        {{staff.position}}
+                    </span>
+                </td>
+                <td>
+                    <span style="color: white;" class="font-weight-bold">
+                        {{staff.status}}
+                    </span>
+                </td>
+                <td>
+                    <a href="{% url 'staff_profile' staff.user_id %}">
+                        <span style="color: white;" class="font-weight-bold">
+                            view Profile in details
+                        </span>
+                    </a>
+
+                </td>
+            </tr>
+
+            {% endfor %}
+
+            {% endif %}
+        </table>
+    </div>
+    
+</section>
+</div>
+{% endblock body_content %}

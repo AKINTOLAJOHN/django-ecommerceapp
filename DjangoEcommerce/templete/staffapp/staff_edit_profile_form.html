@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block title %} EDIT PROFILE {% endblock title%}
+
+
+{% block body_content %}
+<style>
+    a{
+        color: black;
+    }
+    title{
+        text-align: none;
+    }
+</style>
+
+<div class="container center w-25 ">
+    
+    <div class="">
+        <form action="" method="post" class="mt-2 shadow  p-3 mb-3  !spacing " enctype="multipart/form-data">
+            {% csrf_token %}
+            {% load bootstrap %}
+            {{user_form|bootstrap}}
+            {{profile_form|bootstrap}}
+            <div class="d-flex justify-content-center">
+                <input class="bc-white mt-2 ml-2 btn btn-outline-dark" type="submit" value="Update record">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock body_content %}

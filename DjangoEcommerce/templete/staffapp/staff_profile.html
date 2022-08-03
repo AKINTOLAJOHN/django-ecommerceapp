@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% block title %} Staff_profile {% endblock title %}
+
+{% block body_content %}
+{% load static %}
+<!-- -->
+
+{% if profile_details %}
+
+{% for profile in profile_details %}
+
+<div class="container shadow  p-3 mb-5  !spacing  w-25 mt-4">
+    <div id="dash"> 
+    <hr style="background-color: black;">
+    <section>
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+    <h2 class="ml-2">Staff Profile</h2>
+    </div>
+    </section>
+
+{% if profile.profile_passport %}
+
+<img src="{{ profile.profile_passport.url }}" class="card-img img-fluid"  id="product-detail" style="width: 200px;">
+{% else %}
+    <i class="fas fa-user fa-lg fa-fw text-dark me-2"></i>
+{% endif %}
+
+    <h5>STAFF ID:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.user_id}}
+        </span>
+    </h5>
+    <h5>FULLNAME:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.user.first_name}} {{profile.user.last_name}}
+        </span>
+    </h5>
+    <h5>USERNAME:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.user.username}}
+        </span>
+    </h5>
+    <h5>EMAIL ADDRESS:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.user.email}}
+        </span>
+    </h5>
+    <h5>ADDRESS:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.address}}
+        </span>
+    </h5>
+    <h5>STATE:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.state}}
+        </span>
+    </h5>
+    <h5>NATIONALITY:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.nationality}}
+        </span>
+    </h5>
+    <h5>MARITAL STATUS:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.marital_status}}
+        </span>
+    </h5>
+    <h5>POSITION:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.position}}
+        </span>
+    </h5>
+    <h5>DATE OF EMPLOYMENT:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.user.date_joined}}
+        </span>
+    </h5>
+    <h5>MEANS OF IDENTIFICATION:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {% if profile.means_of_identity %}
+            <img src="{{profile.means_of_identity.url}}" class="card-img img-fluid" alt="Card image cap" id="product-detail"> {% endif %}
+        </span>
+    </h5>
+    <h5>PARTICULARS:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {% if profile.particulars %}
+            <img src="{{profile.particulars.url}}" class="card-img img-fluid" alt="Card image cap" id="product-detail"> {% endif %}
+        </span>
+    </h5>
+    <h5>PROFILE STATUS:
+        <span style="color: #0e399c;" class="font-weight-bold">
+            {{profile.status}}
+        </span>
+    </h5>
+    {% if user.is_superuser%}
+    <div class="row pb-3">
+        <div class="col">
+            <a href="{% url 'edit_profile' profile.user_id %}">
+                <button type="submit" class="btn btn-outline-primary btn-lg" name="submit" value="addtocard">Edit Profile</button>
+            </a>
+            <a href="{% url 'deactivate' profile.user_id %}">
+                <button type="submit" class="btn btn-primary btn-lg" name="submit" value="addtocard">
+                    {% if user.is_active == 1 %}
+                    Deactivate
+                    {% else %}
+                    Activate
+                    {% endif %}
+                </button>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</div>
+
+
+{% endfor %}
+{% endif %}
+</div>
+{% endblock body_content %}    

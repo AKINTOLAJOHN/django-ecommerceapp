@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% block title %}view in details {% endblock title %}
+
+{% block body_content %}
+
+{% load static %}
+
+<style>
+  form .form-group .id_quantity {
+    border: none;
+    width: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+</style>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <h4>Shop</h4>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+<!-- Shop Section Begin -->
+
+        <section class="breadcrumb-option text-pink container mt-3">
+            <hr style="background-color: black;">
+            <div class="row">
+                {% if viewGood %}
+
+                {% for product in viewGood %}
+                <!-- e -->
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="thumbnail" src="{{product.product_image.url}}" style="height: 300px; width: 500px;">
+                    </div>
+                    <!-- s -->
+                    <div class="col-lg-5">
+                        <h6 class="ml-2">Description:</h6>
+                        <p class="ml-5">{{product.description}}</p>
+                        <h6 class="ml-2">Brand:</h6>
+                        <p class="text-muted ml-5"><strong>Easy Wear</strong></p>
+                        <h6 class="ml-2">categories:</h6> 
+                        <div class="box-element product">
+                            <p class="ml-5">
+                                {{product.product_name}}</p>
+                                <hr class="bg-dark">
+                                <h4 class="ml-3"><strong>${{product.price}}</strong></h4>
+                                <hr class="bg-dark">
+                                <!--  -->
+                                <form action="" method="post" class="mt-2 shadow  p-3 mb-3  !spacing ">
+                                    {% csrf_token %}
+                                    {% load bootstrap %}
+                                    {{form|bootstrap}}
+                                    <div class="d-flex justify-content-center">
+                                        <input class="bc-white mt-2 ml-2 loginbutton btn btn-dark" type="submit" value="add to cart">
+                                    </div>
+                                </form>
+                                <!--  -->
+
+                        </div>
+                    </div>
+                    <!-- s -->
+                </div>
+                <!-- e -->
+
+
+                {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+        
+{% endblock body_content %}

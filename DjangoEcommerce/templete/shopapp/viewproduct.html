@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+
+{% block title %} view_good {% endblock title %}
+
+{% block body_content %}
+
+<div id="dash"> 
+    
+      <section class="section main-section">
+          <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
+                      <div class="flex ">
+                              <table class="table table-dark table-striped table-hover">
+                                  <thead>
+                                      <th class="col-2" >PRODUCT_ID</th>
+                                      <th class="col-2">PICTURE</th>
+                                      <th class="col-2">PRODUCT_NAME</th>
+                                      <th class="col-2">CATATOGIES</th>
+                                      <th class="col-2">PRICE</th>
+                                      <th class="col-2">ITEM_VALID</th>
+                                  </thead>
+                                  {% if productItem %}
+  
+                                  {% for product in productItem %}
+                                  
+                                  <tr>
+                                      <td>
+                                          <span style="color: #969cad;" class="font-weight-bold">
+                                              {{product.id}}
+                                          </span>
+                                      </td>
+                                      <td>
+                                        <span style="color: white;" class="font-weight-bold">
+                                        {% if product.product_image %}
+                                            <img src="{{product.product_image.url}}" alt="img" width="80px" height="100px" />
+                                        {% else %}
+                                        <i class="fas fa-user fa-lag fa-fw text-dark me-2"></i>
+                                        {% endif %}
+                                        </span>
+                                    </td>
+                                      <td>
+                                          <span style="color: white;" class="font-weight-bold">
+                                              {{product.product_name}}
+                                          </span>
+                                      </td>
+                                      <td>
+                                          <span style="color: white;" class="font-weight-bold">
+                                              {{product.categories}}
+                                          </span>
+                                      </td>
+                                      <td>
+                                          <span style="color: white;" class="font-weight-bold">
+                                              {{product.price}}
+                                          </span>
+                                      </td>
+                                      <td>
+                                        <a href="{% url 'deapproval' product.id %}">
+                                            <button type="submit" class="btn btn-primary btn-lg" name="submit" value="addtocard">
+                                                {% if product.item_validation == 1 %}
+                                                Deactivate
+                                                {% else %}
+                                                Activate
+                                                {% endif %}
+                                            </button>
+                                      </td>
+                                  </tr>
+  
+                                  {% endfor %}
+  
+                                  {% endif %}
+                              </table>
+  
+              </div>
+          </div>
+      </section>
+  </div>
+
+
+{% endblock body_content %}  

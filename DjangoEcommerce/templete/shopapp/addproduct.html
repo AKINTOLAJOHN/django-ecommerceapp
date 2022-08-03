@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block title %} contact {% endblock title %}
+
+{% block body_content %}
+
+
+<style>
+   form{
+       width: 400px;
+   }
+   a{
+       color: black;
+   }
+</style>
+<center>
+   <div class="way col-md-6 col-lg-6 col-xxl-6 col-sm-12 col-xm-12 ">
+       <form action="" method="post" class="mt-2 shadow  p-3 mb-3  !spacing " enctype="multipart/form-data">
+           {% csrf_token %}
+           {% load bootstrap %}
+           {{form|bootstrap}}
+           <div class="d-flex justify-content-center">
+               <input class="bc-white mt-2 ml-2 loginbutton btn btn-dark" type="submit" value="Register">
+           </div>
+       </form>
+   </div>
+
+</center>
+
+{% endblock body_content %}

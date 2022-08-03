@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Male_Fashion Template">
+        <meta name="keywords" content="Male_Fashion, unica, creative, html">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %} E-commerce {% endblock title %}</title>
+        
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+
+       <style>
+           .nav-link{
+               color: black;
+           }
+           .nav-link :hover{
+               color: blue;
+           }
+       </style> 
+  
+        
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href={% static 'css/bootstrap.min.css' %} >
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" >
+    <script src="{% static 'js/index.js' %}"></script>
+    
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="{% url 'logout' %}">logout</a>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header bg-info" >
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href=""><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="{% url 'dashboard' %}">Shop</a></li>
+                            <li><a href="{% url 'mainblog' %}">Blog</a></li>
+                            <li><a href="{% url 'mainabout' %}">About</a></li>
+                            <li><a href="{% url 'maincontact' %}">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch mr-4"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+                        <a href="#" class="mr-4"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+                        <a href="{% url 'cart' user.id %}"  class="mr-5"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span></span></a>
+                        
+                        <div class="links">
+                        <ul id="inline-popups">
+                            <a href="#test-popup" data-effect="mfp-zoom-in"><img src="{% static 'img/icon/user.png' %}" alt="" style="width: 20px;"> </a>
+                        </ul>
+                        </div>
+
+<!-- Popup itself -->
+<div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+
+
+<!--  -->
+    {% if user.is_staff %}
+      <a class="nav-link" href="{% url 'staff_profile' user.id  %}">
+        <span style="font-size: 15px;">profile</span>
+      </a>
+      <a class="nav-link "  href="{% url 'manage_customer' %}">
+          <span style="font-size: 15px;" >Manage_Customer</span>
+        </a>
+
+        <a class="nav-link "  href="{% url 'add' %}">
+            <span style="font-size: 15px;" >add product</span>
+        </a>
+        {% endif %}
+        <!--  -->
+    {% if user.is_staff != 1 %}
+    _<a class="nav-link" href="{% url 'customerProfile' user.id %}">
+        <span style="font-size: 15px;">profile</span>
+        </a>
+    {% endif %}
+        <!--  -->
+        {% if user.is_superuser %}
+          <a class="nav-link" href="{% url 'manage_staff' %}">
+            <span style="font-size: 15px;">Manage_Staff</span>
+          </a>
+  
+      <a class="nav-link" href="{% url 'viewgoods' %}">
+        <span style="font-size: 15px;">view product</span>
+      </a>
+    {% endif %}
+      <div>
+          <a class="nav-link" href="{% url 'logout' %}">
+              <span style="font-size: 15px;">logout</span>
+            </a>
+      </div>
+    
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            
+        </div>
+    </header>
+    <!-- Header Section End -->
+{% block body_content %}
+
+
+
+
+
+{% endblock body_content %}
+    
+    <!-- Footer Section Begin -->
+
+    <footer class="footer bg-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="{% static 'img/footer-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="{% static 'img/payment.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="">Clothing Store</a></li>
+                            <li><a href="">Accessories</a></li>
+                            <li><a href="">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+    </footer>
+
+
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
