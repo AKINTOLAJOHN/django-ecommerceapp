@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% block titletag %} detail {% endblock titletag %}
+{% block body_content %}
+
+<div class=" py-5 mx-5">
+    <div class="row">
+
+        <div class="col-lg-2 bg-light shadow-lg">
+        <h1 class="h2 pb-4">profile</h1>
+        {% if user.is_staff %}
+        <a class="nav-link  text-dark btn btn-outline-success mb-3" href="{% url 'staff_profile' user.id  %}">
+          <span style="font-size: 20px;">profile</span>
+        </a>
+        <a class="nav-link text-dark btn btn-outline-success mb-3"  href="{% url 'manage_customer' %}">
+            <span style="font-size: 20px;" >Manage_Customer</span>
+          </a>
+  
+          <a class="nav-link text-dark  btn btn-outline-success mb-3"  href="{% url 'add' %}">
+              <span style="font-size: 20px;" >add product</span>
+          </a>
+          {% endif %}
+          <!--  -->
+      {% if user.is_staff != 1 %}
+      _<a class="nav-link text-dark btn btn-outline-success mb-3" href="{% url 'customerProfile' user.id %}">
+          <span style="font-size: 20px;">profile</span>
+          </a>
+      {% endif %}
+          <!--  -->
+          {% if user.is_superuser %}
+            <a class="nav-link text-dark btn btn-outline-success mb-3" href="{% url 'manage_staff' %}">
+              <span style="font-size: 20px;">Manage_Staff</span>
+            </a>
+    
+        <a class="nav-link text-dark btn btn-outline-success mb-3" href="{% url 'viewgoods' %}">
+          <span style="font-size: 20px;">view product</span>
+        </a>
+      {% endif %}
+        <div>
+        <a class="nav-link text-dark  btn btn-outline-success mb-3" href="{% url 'logout' %}">
+            <span style="font-size: 20px;">logout</span>
+        </a>
+        <a class="nav-link text-dark  btn btn-outline-success mb-3" href="">
+            <span style="font-size: 20px;">change pasword</span>
+        </a>
+        </div>
+        </div>
+<!--  -->
+        <div class="col-lg-10 bg-light">
+            {% block view %}
+            {% endblock view %}
+        </div>
+<!--  -->
+
+    </div>
+</div>
+
+{% endblock body_content %}

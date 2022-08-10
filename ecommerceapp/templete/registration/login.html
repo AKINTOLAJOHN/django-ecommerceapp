@@ -1,0 +1,24 @@
+{% extends 'homepage/index_main.html' %}
+{% block title %} login  {% endblock title %}
+{% block body_content %}
+
+
+    <div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center ">
+            <form action="" method="post" class="mt-4 shadow  p-5   !spacing ">
+                {% csrf_token %}
+                {% load bootstrap %}
+                {{form|bootstrap}}
+                <div class="d-flex justify-content-center">
+                    <input class="bc-white m-3 btn btn-success w-25 br-3 loginbutton" type="submit" value="login">
+                </div>
+                <a href="{% url 'password_reset' %}">Reset password </a>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    {% endblock body_content %}

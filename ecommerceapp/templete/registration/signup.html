@@ -1,0 +1,24 @@
+{% extends 'homepage/index_main.html' %}
+{% block title %} signup {% endblock title %}
+{% block body_content %}
+
+
+    <div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <form action="" method="post" class="mt-2 shadow  p-3 mb-3  !spacing ">
+                {% csrf_token %}
+                {% load bootstrap %}
+                {{form|bootstrap}}
+                <div class="d-flex justify-content-center">
+                    <input class="bc-white mt-2 ml-2 my-3 loginbutton btn btn-success w-25" type="submit" value="Register">
+                </div>
+                <a href="{% url 'login' %}">Have an account? Login here</a>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    {% endblock body_content %}

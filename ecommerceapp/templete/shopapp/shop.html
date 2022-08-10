@@ -1,0 +1,192 @@
+{% extends 'main.html' %}
+{% block titletag %} shop {% endblock titletag %}
+{% block body_content %}
+    <!-- Modal -->
+
+
+
+
+
+    <!-- Start Content -->
+    <div class="container py-5"> 
+
+<h1 class="h2 pb-4">Categories for men</h1>
+{% if products %}
+ <div class="row">
+{% for product in products %}
+{% if product.categories == 'Men' and product.item_validation  %}
+<div class="col-lg-4" >
+    <img class="thumbnail" src="{{product.product_image.url}}" style="height: 300px; width: 300px;">
+
+    <div class="box-element product mt-5 ml-3">
+        <h6 c>
+            <strong class="text-primary">{{product.product_name}}</strong>
+        </h6>   
+
+        <div class="rating" style="color: rgb(250, 220, 48);">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
+        <h4><strong>${{product.price}}</strong></h4>
+        <div class="row mt-3">
+            <a class="btn btn-outline-success add-btn ml-2" style="width: 200px;" href="" >Add to Cart
+            </a>
+        </div>
+        
+    </div>
+
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+            
+
+            <div class="">
+                <h1 class="h2 pb-4 pt-5">Categories for Women</h1>
+                {% if products %}
+ 
+                {% for product in products %}
+                {% if product.categories == 'Women' and product.item_validation  %}
+                <div class="col-lg-4" >
+                    <img class="thumbnail" src="{{product.product_image.url}}" style="height: 300px; width: 300px;">
+                
+                    <div class="box-element product mt-5 ml-3">
+                        <h6>
+                            <strong class="text-primary">{{product.product_name}}</strong>
+                        </h6>   
+                
+                        <div class="rating" style="color: rgb(250, 220, 48);">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <h4><strong>${{product.price}}</strong></h4>
+                        <div class="row mt-3">
+                            <a class="btn btn-inline-success add-btn ml-2" style="width: 200px;" href="" >Add to Cart
+                            </a>
+                        </div>
+                
+                
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+                </div>
+</div>
+
+
+    <!-- Start Brands -->
+    <section class="bg-light py-5">
+        <div class="container my-4">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">Our Brands</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        Lorem ipsum dolor sit amet.
+                    </p>
+                </div>
+                <div class="col-lg-9 m-auto tempaltemo-carousel">
+                    <div class="row d-flex flex-row">
+                        <!--Controls-->
+                        <div class="col-1 align-self-center">
+                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="prev">
+                                <i class="text-light fas fa-chevron-left"></i>
+                            </a>
+                        </div>
+                        <!--End Controls-->
+
+                        <!--Carousel Wrapper-->
+                        <div class="col">
+                            <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">
+                                <!--Slides-->
+                                <div class="carousel-inner product-links-wap" role="listbox">
+
+                                    <!--First slide-->
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End First slide-->
+
+                                    <!--Second slide-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Second slide-->
+
+                                    <!--Third slide-->
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
+                                            </div>
+                                            <div class="col-3 p-md-5">
+                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End Third slide-->
+
+                                </div>
+                                <!--End Slides-->
+                            </div>
+                        </div>
+                        <!--End Carousel Wrapper-->
+
+                        <!--Controls-->
+                        <div class="col-1 align-self-center">
+                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="next">
+                                <i class="text-light fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+                        <!--End Controls-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Brands-->
+
+
+    {% endblock body_content %}
+ 

@@ -1,0 +1,17 @@
+{% extends 'detail.html' %}
+{% block titletag %} detail profile {% endblock titletag %}
+
+{% block view %}
+
+
+  <form action="" method="post" class="mt-2 shadow  p-3 mb-3  !spacing " enctype="multipart/form-data">
+    {% csrf_token %}
+    {% load bootstrap %}
+    {{user_form|bootstrap}}
+    {{profile_form|bootstrap}}
+    <div class="d-flex justify-content-center">
+        <input class="bc-white mt-5 ml-2 btn btn-outline-success w-25" type="submit" value="update">
+    </div>
+</form>
+
+{% endblock view %}
