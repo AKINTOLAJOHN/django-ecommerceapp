@@ -55,46 +55,7 @@
 </div>
 </section>
 <!--  -->
-<section class="breadcrumb-option mt-5 bg-dark">
-<h4 class="ml-5" style="color: azure;">Footwear</h4>
-<hr style="background-color: black;">
-<div class="row">
-{% if products %}
 
-{% for product in products %}
-{% if product.categories == 'footwear' %}
-
-<div class="col-lg-4" >
-    <img class="thumbnail" src="{{product.product_image.url}}" style="height: 300px; width: 300px;">
-
-    <div class="box-element product mt-5 ml-3">
-        <h6 c>
-            <strong class="text-primary">{{product.product_name}}</strong>
-        </h6>   
-
-        <div class="rating" style="color: rgb(250, 220, 48);">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-        </div>
-        <h4><strong>${{product.price}}</strong></h4>
-        <div class="row mt-3">
-            <a class="btn btn-primary add-btn ml-2" style="width: 200px;" href="{% url 'viewItem' product.id %}" >Add to Cart
-            </a>
-        </div>
-
-
-    </div>
-</div>
-
-{% endif %}
-{% endfor %}
-{% endif %}
-</div>
-
-</section>
 
 </div>
 </section>  

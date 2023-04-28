@@ -30,7 +30,7 @@
         
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href={% static 'css/bootstrap.min.css' %} >
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" >
     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
@@ -67,7 +67,7 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header bg-info" >
+    <header class="header bg-info shadow-bg" >
 
         <div class="container">
             <div class="row">
@@ -79,10 +79,10 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="{% url 'dashboard' %}">Shop</a></li>
-                            <li><a href="{% url 'mainblog' %}">Blog</a></li>
-                            <li><a href="{% url 'mainabout' %}">About</a></li>
-                            <li><a href="{% url 'maincontact' %}">Contacts</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'dashboard' %}">Shop</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'mainblog' %}">Blog</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'mainabout' %}">About</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'maincontact' %}">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -104,35 +104,35 @@
 
 <!--  -->
     {% if user.is_staff %}
-      <a class="nav-link" href="{% url 'staff_profile' user.id  %}">
+      <a class="nav-link" class="text-decoration-none" href="{% url 'staff_profile' user.id  %}">
         <span style="font-size: 15px;">profile</span>
       </a>
-      <a class="nav-link "  href="{% url 'manage_customer' %}">
+      <a class="nav-link " class="text-decoration-none" href="{% url 'manage_customer' %}">
           <span style="font-size: 15px;" >Manage_Customer</span>
         </a>
 
-        <a class="nav-link "  href="{% url 'add' %}">
+        <a class="nav-link " class="text-decoration-none" href="{% url 'add' %}">
             <span style="font-size: 15px;" >add product</span>
         </a>
         {% endif %}
         <!--  -->
     {% if user.is_staff != 1 %}
-    _<a class="nav-link" href="{% url 'customerProfile' user.id %}">
+    _<a class="nav-link" class="text-decoration-none" href="{% url 'customerProfile' user.id %}">
         <span style="font-size: 15px;">profile</span>
         </a>
     {% endif %}
         <!--  -->
         {% if user.is_superuser %}
-          <a class="nav-link" href="{% url 'manage_staff' %}">
+          <a class="nav-link"class="text-decoration-none" href="{% url 'manage_staff' %}">
             <span style="font-size: 15px;">Manage_Staff</span>
           </a>
   
-      <a class="nav-link" href="{% url 'viewgoods' %}">
+      <a class="nav-link" class="text-decoration-none" href="{% url 'viewgoods' %}">
         <span style="font-size: 15px;">view product</span>
       </a>
     {% endif %}
       <div>
-          <a class="nav-link" href="{% url 'logout' %}">
+          <a class="nav-link" class="text-decoration-none" href="{% url 'logout' %}">
               <span style="font-size: 15px;">logout</span>
             </a>
       </div>
@@ -158,7 +158,7 @@
     
     <!-- Footer Section Begin -->
 
-    <footer class="footer bg-info">
+    <footer class="footer bg-info text-dark">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -166,7 +166,7 @@
                         <div class="footer__logo">
                             <a href="#"><img src="{% static 'img/footer-logo.png' %}" alt=""></a>
                         </div>
-                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <p class="text-dark">The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="{% static 'img/payment.png' %}" alt=""></a>
                     </div>
                 </div>
@@ -174,9 +174,9 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="">Clothing Store</a></li>
-                            <li><a href="">Accessories</a></li>
-                            <li><a href="">Sale</a></li>
+                            <li><a class="text-decoration-none  text-dark" href="">Clothing Store</a></li>
+                            <li><a class="text-decoration-none text-dark" href="">Accessories</a></li>
+                            <li><a class="text-decoration-none text-dark" href="">Sale</a></li>
                         </ul>
                     </div>
                 </div>
@@ -184,18 +184,18 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
+                            <li><a class="text-decoration-none text-dark" href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a class="text-decoration-none text-dark" href="#">Payment Methods</a></li>
+                            <li><a class="text-decoration-none text-dark" href="#">Delivary</a></li>
+                            <li><a class="text-decoration-none text-dark" href="#">Return & Exchanges</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6 text-dark">
                     <div class="footer__widget">
                         <h6>NewLetter</h6>
                         <div class="footer__newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <p class="text-dark">Be the first to know about new arrivals, look books, sales & promos!</p>
                             <form action="#">
                                 <input type="text" placeholder="Your email">
                                 <button type="submit"><span class="icon_mail_alt"></span></button>
